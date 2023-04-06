@@ -14,7 +14,7 @@ public class AddressBookMain {
         while (flag1){
 
             System.out.println("-----\nSelect option");
-            System.out.println("1.Add Details \n 2.Edit Contact\n 3.Display\n 4.Exit");
+            System.out.println("1.Add Details \n 2.Edit Contact\n 3.Delete contact \n 4.Display\n 5.Exit");
             int option = sc.nextInt();
             switch (option){
                 case 1:
@@ -24,9 +24,12 @@ public class AddressBookMain {
                     addressBook.editContact();
                     break;
                 case 3:
-                    addressBook.display();
+                    addressBook.deleteContact();
                     break;
                 case 4:
+                    addressBook.display();
+                    break;
+                case 5:
                     flag1 = false;
                     break;
                 default:
@@ -34,6 +37,3 @@ public class AddressBookMain {
                     break;
             }
         }
-
-    }
-}
