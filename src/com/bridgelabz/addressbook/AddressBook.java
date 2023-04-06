@@ -3,10 +3,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
+
     Scanner sc = new Scanner(System.in);
     public Contact createContact(){
-        Contact person = new Contact();
+             Contact person = new Contact();
 
+        ArrayList<Contact> addressbook1 = new ArrayList<>();
             System.out.println("Enter your First Name");
             person.setFirstName(sc.nextLine());
 
@@ -41,15 +43,61 @@ public class AddressBook {
             return person;
         }
        public void addDetails(){
+        ArrayList<Contact> addressBook1 = new ArrayList<>();
         Contact cont = createContact();
+        addressBook1.add(cont);
            System.out.println(cont);
            System.out.println("Contacts added Successfully");
+        }
+        public void editContact (){
+        ArrayList<Contact> addressBook1 = new ArrayList<>();
+
+        boolean isContactFound = false;
+            System.out.println("Enter ContactDetail to edit");
+            String contactDetail = sc.next();
+            for(Contact cont : addressBook1){
+                if (contactDetail.equalsIgnoreCase(cont.getFirstName())){
+                    isContactFound = true;
+                    System.out.println("Enter First Name ");
+                    cont.setFirstName(sc.next());
+                    System.out.println("Enter Last Name ");
+                    cont.setLastName(sc.next());
+                    System.out.println("Enter address ");
+                    cont.setAddress(sc.next());
+                    System.out.println("Enter City");
+                    cont.setCity(sc.next());
+                    System.out.println("Enter State");
+                    cont.setState(sc.next());
+                    System.out.println("Enter Email");
+                    cont.setEmail(sc.next());
+                    System.out.println("Enter Zip Code ");
+                    cont.setZip(sc.next());
+                    System.out.println("Enter Phone Number ");
+                    cont.setPhoneNumber(sc.next());
+                    break;
+                }
+            }
+            if(isContactFound){
+                System.out.println("Contact Updated Successfully..");
+            }
+            else {
+                System.out.println("Contact not found");
+            }
+        }
+        void display(){
+        ArrayList<Contact> addressBook1 = new ArrayList<>();
+        for(Contact person : addressBook1){
+            System.out.println(person);
+        }
         }
 
 
 
-
     }
+
+
+
+
 
 
 
