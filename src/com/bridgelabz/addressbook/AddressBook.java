@@ -1,13 +1,14 @@
-package com.bridgelabz;
+package com.bridgelabz.addressBook;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
+
     Scanner sc = new Scanner(System.in);
-    ArrayList<Contact> addressBook1 = new ArrayList<>();
+    ArrayList<Contact> contactArrayList = new ArrayList<>();
 
 
-    public Contact createContact(){
+    public void addContact(){
         Contact person = new Contact();
         System.out.println("Enter your First Name");
         person.setFirstName(sc.nextLine());
@@ -40,22 +41,17 @@ public class AddressBook {
         System.out.println("Enter your Email ID");
         person.setEmail(sc.nextLine());
 
-        return person;
+        contactArrayList.add(person);
+        displayContact();
     }
-    public void addDetails(){
-        ArrayList<Contact> addressBook1 = new ArrayList<>();
-        Contact cont = createContact();
-        addressBook1.add(cont);
-        System.out.println(cont);
-        System.out.println("Contacts added Successfully");
-    }
+
     public void editContact (){
-        ArrayList<Contact> addressBook1 = new ArrayList<>();
+
 
         boolean isContactFound = false;
         System.out.println("Enter ContactDetail to edit");
         String contactDetail = sc.next();
-        for(Contact cont : addressBook1){
+        for(Contact cont : contactArrayList){
             if (contactDetail.equalsIgnoreCase(cont.getFirstName())){
                 isContactFound = true;
                 System.out.println("Enter First Name ");
@@ -88,14 +84,14 @@ public class AddressBook {
         boolean isContactFound = false;
         System.out.println("enter name to delete contact");
         String name = sc.nextLine();
-        for(Contact contact : addressBook1){
+        for(Contact contact : contactArrayList){
             if (contact.getFirstName().equalsIgnoreCase(name)){
                 System.out.println("contact found :");
                 isContactFound = true;
                 System.out.println(contact);
                 System.out.println("Confirm to delete (y/n)");
                 if(sc.next().equalsIgnoreCase("y")){
-                    addressBook1.remove(contact);
+                    contactArrayList.remove(contact);
                     System.out.println("contact delete");
                 }
                 break;
@@ -105,27 +101,23 @@ public class AddressBook {
             System.out.println("opps... contact not found");
         }
     }
-    void display(){
+    void displayContact(){
 
-        for(Contact person : addressBook1){
-            System.out.println(person);
+        System.out.println(contactArrayList);
+    }
+
+    void addMultipleContact(){
+        System.out.println("Enter the number of person whose details you want" +
+                             "to add to address book");
+        int no_of_person = sc.nextInt();
+        for(int i=1; i<=no_of_person; i++){
+//            call addition method for so many times
+            addContact();
         }
     }
 
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
