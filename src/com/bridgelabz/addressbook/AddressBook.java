@@ -1,8 +1,18 @@
-package com.bridgelabz.addressBook;
+package com.bridgelabz.addressbook;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBook {
+    private String AddressBookName;
+
+    public String getAddressBookName() {
+        return AddressBookName;
+    }
+
+    public void setAddressBookName(String addressBookName) {
+        AddressBookName = addressBookName;
+    }
 
     Scanner sc = new Scanner(System.in);
     ArrayList<Contact> contactArrayList = new ArrayList<>();
@@ -106,18 +116,24 @@ public class AddressBook {
         System.out.println(contactArrayList);
     }
 
-    void addMultipleContact(){
-        System.out.println("Enter the number of person whose details you want" +
-                             "to add to address book");
-        int no_of_person = sc.nextInt();
-        for(int i=1; i<=no_of_person; i++){
-//            call addition method for so many times
-            addContact();
-        }
+//    void addMultipleContact(){
+//        System.out.println("Enter the number of person whose details you want" +
+//                             "to add to address book");
+//        int no_of_person = sc.nextInt();
+//        for(int i=1; i<=no_of_person; i++){
+////            call addition method for so many times
+//            addContact();
+//        }
+//    }
+
+    @Override
+    public String toString() {
+        return "AddressBook{" +
+                "AddressBookName='" + AddressBookName + '\'' +
+                '}';
     }
-
-
-
 }
+
+
 
 
