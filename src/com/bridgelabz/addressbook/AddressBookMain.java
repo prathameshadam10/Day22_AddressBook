@@ -72,7 +72,10 @@ public class AddressBookMain {
             cityList.addAll(addressBook.getContactArrayList().stream().filter(Contact ->
                     Contact.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList()));
         });
-       
+        int count = cityList.size();
+        System.out.println("Total Number of Contact Person");
+        System.out.println(count + "Person Found... which belongs to " + cityName + "city");
+        System.out.println(cityList);
     }
     public void searchByState(){
         System.out.println("Enter the Name Of State by Which you want Search");
@@ -82,7 +85,10 @@ public class AddressBookMain {
             stateList.addAll(addressBook.getContactArrayList().stream().filter(Contact ->
                     Contact.getCity().equalsIgnoreCase(stateName)).collect(Collectors.toList()));
         });
-       
+        int count = stateList.size();
+        System.out.println("Total Number of Contact Person");
+        System.out.println(count + "Person Found... which belongs to " + stateName + "State");
+        System.out.println(stateList);
     }
     public static void main(String[] args) {
         System.out.println("******Welcome to Address Book Program******");
@@ -103,6 +109,7 @@ public class AddressBookMain {
             System.out.println(" 6 : Press 6 to Display All AddressBook.... ");
             System.out.println(" 7 : Press 7 to Display All the Contact from Specified City.... ");
             System.out.println(" 8 : Press 8 to Display All the Contact from Specified State.... ");
+            System.out.println(" 9 : Press 5 to Display Dictionary of AddressBook.... ");
             System.out.println(" 9 : Press 9 to Exit ");
             int option = sc.nextInt();
             switch (option){
@@ -128,6 +135,8 @@ public class AddressBookMain {
                 case 8:
                     addressBookMain.searchByState();
                 case 9:
+                    System.out.println(addressBookMain.hashMap);  
+                case 10:
                     flag1 = false;
                     break;
                 default:
@@ -138,4 +147,5 @@ public class AddressBookMain {
 
     }
 }
+
 
