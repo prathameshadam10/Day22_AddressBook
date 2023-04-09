@@ -95,11 +95,30 @@ public class AddressBookMain {
         String name = sc.next();
         if(hashMap.containsKey(name)){
             AddressBook temp = hashMap.get(name);
-            List<Contact> sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getFirstName)).collect(Collectors.toList());
+            System.out.println("Choose the option to sort the contacts in the Address Book based on");
+            System.out.println("1.First Name\n 2.City \n 3.State \n 4.Zip Code...");
+            int choice = sc.nextInt();
+
+            List<Contact> sortedList = new ArrayList<>();
+            switch (choice){
+                case 1:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getFirstName)).collect(Collectors.toList());
+                    break;
+                case 2:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getCity)).collect(Collectors.toList());
+                    break;
+                case 3:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getState)).collect(Collectors.toList());
+                    break;
+                case 4:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getZip)).collect(Collectors.toList());
+                    break;
+            }
             System.out.println("The sorted Contacts....");
             System.out.println(sortedList);
             System.out.println();
-        }
+        }else
+            System.out.println("Given AddressBook Not Found....");
     }
     public static void main(String[] args) {
         System.out.println("******Welcome to Address Book Program******");
@@ -161,6 +180,7 @@ public class AddressBookMain {
 
     }
 }
+
 
 
 
