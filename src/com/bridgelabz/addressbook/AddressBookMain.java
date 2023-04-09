@@ -104,7 +104,7 @@ public class AddressBookMain {
             System.out.println(" 7 : Press 7 to Display All the Contact from Specified City.... ");
             System.out.println(" 8 : Press 8 to Display All the Contact from Specified State.... ");
             System.out.println(" 9 : Press 5 to Display Dictionary of AddressBook.... ");
-            System.out.println(" 9 : Press 9 to Exit ");
+            System.out.println(" 10 : Press 10 to Exit ");
             int option = sc.nextInt();
             switch (option){
                 case 1:
