@@ -72,10 +72,7 @@ public class AddressBookMain {
             cityList.addAll(addressBook.getContactArrayList().stream().filter(Contact ->
                     Contact.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList()));
         });
-        int count = cityList.size();
-        System.out.println("Total Number of Contact Person");
-        System.out.println(count + "Person Found... which belongs to " + cityName + "city");
-        System.out.println(cityList);
+      
     }
     public void searchByState(){
         System.out.println("Enter the Name Of State by Which you want Search");
@@ -85,10 +82,7 @@ public class AddressBookMain {
             stateList.addAll(addressBook.getContactArrayList().stream().filter(Contact ->
                     Contact.getCity().equalsIgnoreCase(stateName)).collect(Collectors.toList()));
         });
-        int count = stateList.size();
-        System.out.println("Total Number of Contact Person");
-        System.out.println(count + "Person Found... which belongs to " + stateName + "State");
-        System.out.println(stateList);
+       
     }
     public static void main(String[] args) {
         System.out.println("******Welcome to Address Book Program******");
