@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class AddressBookMain {
     HashMap<String, AddressBook> hashMap = new HashMap<String,AddressBook>();
     Scanner sc = new Scanner(System.in);
@@ -63,6 +64,32 @@ public class AddressBookMain {
             System.out.println(hashMap);
         }
     }
+    public void searchByCity(){
+        System.out.println("Enter the Name Of City by Which you want Search");
+        String  cityName = sc.next();
+        List<Contact> cityList = new ArrayList<>();
+        hashMap.values().stream().forEach(addressBook -> {
+            cityList.addAll(addressBook.getContactArrayList().stream().filter(Contact ->
+                    Contact.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList()));
+        });
+        int count = cityList.size();
+        System.out.println("Total Number of Contact Person");
+        System.out.println(count + "Person Found... which belongs to " + cityName + "city");
+        System.out.println(cityList);
+    }
+    public void searchByState(){
+        System.out.println("Enter the Name Of State by Which you want Search");
+        String  stateName = sc.next();
+        List<Contact> stateList = new ArrayList<>();
+        hashMap.values().stream().forEach(addressBook -> {
+            stateList.addAll(addressBook.getContactArrayList().stream().filter(Contact ->
+                    Contact.getCity().equalsIgnoreCase(stateName)).collect(Collectors.toList()));
+        });
+        int count = stateList.size();
+        System.out.println("Total Number of Contact Person");
+        System.out.println(count + "Person Found... which belongs to " + stateName + "State");
+        System.out.println(stateList);
+    }
     public static void main(String[] args) {
         System.out.println("******Welcome to Address Book Program******");
         System.out.println("Contacts created in Address Book");
@@ -73,7 +100,17 @@ public class AddressBookMain {
         while (flag1){
 
             System.out.println("-----\nSelect option");
-            System.out.println("1.Add Details \n 2.Edit Contact\n 3.Delete contact \n 4.Display\n 5.Add AddressBook\n 6.Display All Addressbook\n 7. exit");
+//            System.out.println("1.Add Details \n 2.Edit Contact\n 3.Delete contact \n 4.Display\n 5.Add AddressBook\n 6.Display All Addressbook\n 7. exit\n 8.");
+            System.out.println(" 1 : Press 1 to Add New Contact.... ");
+            System.out.println(" 2 : Press 2 to Edit Contact.... ");
+            System.out.println(" 3 : Press 3 to Delete Contact....  ");
+            System.out.println(" 4 : Press 4 to Display Contact.... ");
+            System.out.println(" 5 : Press 5 to Add AddressBook.... ");
+            System.out.println(" 6 : Press 6 to Display All AddressBook.... ");
+            System.out.println(" 7 : Press 7 to Display All the Contact from Specified City.... ");
+            System.out.println(" 8 : Press 8 to Display All the Contact from Specified State.... ");
+            System.out.println(" 9 : Press 5 to Display Dictionary of AddressBook.... ");
+            System.out.println(" 10 : Press 10 to Exit ");
             int option = sc.nextInt();
             switch (option){
                 case 1:
@@ -94,6 +131,12 @@ public class AddressBookMain {
                 case 6:
                     addressBookMain.displayAllAddressbook();
                 case 7:
+                    addressBookMain.searchByCity();
+                case 8:
+                    addressBookMain.searchByState();
+                case 9:
+                    System.out.println(addressBookMain.hashMap);
+                case 10:
                     flag1 = false;
                     break;
                 default:
@@ -104,3 +147,6 @@ public class AddressBookMain {
 
     }
 }
+
+
+

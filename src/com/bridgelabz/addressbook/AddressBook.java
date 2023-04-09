@@ -1,4 +1,5 @@
 package com.bridgelabz.addressbook;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,6 +18,13 @@ public class AddressBook {
     Scanner sc = new Scanner(System.in);
     ArrayList<Contact> contactArrayList = new ArrayList<>();
 
+    public ArrayList<Contact> getContactArrayList() {
+        return contactArrayList;
+    }
+
+    public void setContactArrayList(ArrayList<Contact> contactArrayList) {
+        this.contactArrayList = contactArrayList;
+    }
 
     public void addContact(){
         Contact person = new Contact();
@@ -133,6 +141,7 @@ public class AddressBook {
                 '}';
     }
 }
+
 
 
 
