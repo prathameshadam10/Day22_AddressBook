@@ -90,6 +90,36 @@ public class AddressBookMain {
         System.out.println(count + "Person Found... which belongs to " + stateName + "State");
         System.out.println(stateList);
     }
+    public void displaySortedAddressBook(){
+        System.out.println("Enter the name of the address book  you want to display");
+        String name = sc.next();
+        if(hashMap.containsKey(name)){
+            AddressBook temp = hashMap.get(name);
+            System.out.println("Choose the option to sort the contacts in the Address Book based on");
+            System.out.println("1.First Name\n 2.City \n 3.State \n 4.Zip Code...");
+            int choice = sc.nextInt();
+
+            List<Contact> sortedList = new ArrayList<>();
+            switch (choice){
+                case 1:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getFirstName)).collect(Collectors.toList());
+                    break;
+                case 2:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getCity)).collect(Collectors.toList());
+                    break;
+                case 3:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getState)).collect(Collectors.toList());
+                    break;
+                case 4:
+                    sortedList = temp.getContactArrayList().stream().sorted(Comparator.comparing(Contact::getZip)).collect(Collectors.toList());
+                    break;
+            }
+            System.out.println("The sorted Contacts....");
+            System.out.println(sortedList);
+            System.out.println();
+        }else
+            System.out.println("Given AddressBook Not Found....");
+    }
     public static void main(String[] args) {
         System.out.println("******Welcome to Address Book Program******");
         System.out.println("Contacts created in Address Book");
@@ -110,7 +140,8 @@ public class AddressBookMain {
             System.out.println(" 7 : Press 7 to Display All the Contact from Specified City.... ");
             System.out.println(" 8 : Press 8 to Display All the Contact from Specified State.... ");
             System.out.println(" 9 : Press 5 to Display Dictionary of AddressBook.... ");
-            System.out.println(" 10 : Press 10 to Exit ");
+            System.out.println(" 10 : Press 10 to Display Sorted AddressBook.... ");
+            System.out.println(" 11 : Press 11 to Exit.... ");
             int option = sc.nextInt();
             switch (option){
                 case 1:
@@ -137,6 +168,8 @@ public class AddressBookMain {
                 case 9:
                     System.out.println(addressBookMain.hashMap);
                 case 10:
+                   addressBookMain.displaySortedAddressBook();
+                case 11:
                     flag1 = false;
                     break;
                 default:
@@ -147,6 +180,8 @@ public class AddressBookMain {
 
     }
 }
+
+
 
 
 
